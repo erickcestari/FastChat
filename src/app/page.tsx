@@ -27,7 +27,7 @@ export default function Home() {
   return (
     <div className="flex flex-col items-center justify-center space-y-16">
       <div>
-        <p className=" md:text-8xl text-6xl font-roboto font-extrabold text-transparent  bg-clip-text bg-gradient-to-br from-purple-300 to-red-200">
+        <p className=" md:text-8xl text-6xl font-roboto font-extrabold text-transparent bg-clip-text bg-gradient-to-br from-purple-300 to-red-200">
           Welcome to EasyChat
         </p>
         <div className='relative'>
