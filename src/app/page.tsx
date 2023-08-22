@@ -1,17 +1,23 @@
 "use client"
+
 import TextField from '@mui/material/TextField'
 import InputAdornment from '@mui/material/InputAdornment'
-import { useTheme } from '@mui/material/styles'
 import { ChangeEvent, useState } from 'react'
 import AccountCircleOutline from 'mdi-material-ui/AccountCircleOutline'
-import SendCircleOutline  from 'mdi-material-ui/SendCircleOutline'
+import SendCircleOutline from 'mdi-material-ui/SendCircleOutline'
 import { IconButton } from '@mui/material'
 
 export default function Home() {
-  const theme = useTheme()
   const [username, setUsername] = useState('')
+
+  const maxUsernameLength = 35
   const handleChangeUsername = (e: ChangeEvent<HTMLInputElement>) => {
-    setUsername(e.target.value)
+    e.target.value.length < maxUsernameLength && setUsername(e.target.value)
+  }
+
+  const handleSendUserName = () => {
+    if (username.trim().length === 0) return
+
   }
 
   return (
@@ -38,6 +44,8 @@ export default function Home() {
               label={'Your-Username'}
               value={username}
               onChange={handleChangeUsername}
+              onSubmit={handleSendUserName}
+              onKeyUp={(e) => e.key === 'Enter' && handleSendUserName()}
               InputProps={{
                 startAdornment: (
                   <InputAdornment position="start">
@@ -46,15 +54,14 @@ export default function Home() {
                 ),
               }}
             />
-            <IconButton className='w-10 h-10 ml-3'>
+            <IconButton onClick={handleSendUserName} className='w-10 h-10 ml-3'>
               <SendCircleOutline className=' hover:text-slate-300 bg-gradient-to-br w-8 h-8 from-violet-700 to-red-200 rounded-full' />
             </IconButton>
           </div>
         </div>
         <footer className="bg-white fixed bottom-4 w-[50%] justify-center rounded-lg shadow m-4 dark:bg-gray-800">
           <div className="w-full mx-auto max-w-screen-xl p-4 flex content-center justify-center">
-            <span className="text-sm font-roboto text-gray-300 sm:text-center dark:text-gray-300">The account is public; accessible to anyone!
-            </span>
+            <span className="text-sm font-roboto text-gray-300 sm:text-center dark:text-gray-300">The account is public; accessible to anyone!</span>
           </div>
         </footer>
       </div>
