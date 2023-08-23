@@ -34,23 +34,29 @@ const Page = () => {
     }
   }, [socket, username])
 
+  author && console.log(author.id.slice(0, 6))
+
   return (
     <div className='flex flex-row justify-normal'>
-      <div >
+      <div className='flex flex-col w-full max-w-lg'>
+
         {author && (
           <div className='bg-slate-900'>
-            <div className='flex items-center gap-2'>
-              <Avatar sx={{ bgcolor: `#${author.id.slice(author.id.length - 7, author.id.length - 1)}` }}>{author.name.slice(0, 2).toUpperCase()}</Avatar>
+            <div className='flex items-center px-3 py-3 cursor-default text-slate-300 gap-2'>
+              <Avatar sx={{ background: `linear-gradient(to right bottom, #${author.id.slice(0, 6)}, #${author.id.slice(author.id.length - 7, author.id.length - 1)})` }}>
+                {author.name.slice(0, 2).toUpperCase()}
+              </Avatar>
               <h1 className='font-roboto font-normal'>{author.name.toUpperCase()}</h1>
             </div>
           </div>
         )}
-        {users.map((user: User) => (
-          <RenderUser user={user} key={user.id} />
-        ))}
+        <div className='max-h-[700px] overflow-auto customScrollBar'>
+          {users.map((user: User) => (
+            <RenderUser user={user} key={user.id} />
+          ))}
+        </div>
       </div>
       <div>
-
       </div>
     </div>
   )

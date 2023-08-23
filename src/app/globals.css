@@ -2,26 +2,32 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+.customScrollBar {
+  /* Your other styling here */
+  scrollbar-width: thin;
+  scrollbar-color: #475569 #7e98b3; /* Lighter dark color scheme */
+
+  /* Optional: Add some padding to give space for the custom scrollbar */
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
+.customScrollBar::-webkit-scrollbar {
+  width: 10px;
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+.customScrollBar::-webkit-scrollbar-track {
+  background: #475569; /* Dark background color */
 }
+
+.customScrollBar::-webkit-scrollbar-thumb {
+  background: #7e98b3; /* Lighter thumb color */
+  border-radius: 6px;
+}
+
+.customScrollBar::-webkit-scrollbar-thumb:hover {
+  background: #a4bdc9; /* Lighter hover color */
+}
+
+
+
+
+

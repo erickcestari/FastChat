@@ -15,7 +15,7 @@ const roboto = Roboto_Slab({
 })
 
 export const metadata: Metadata = {
-  title: 'EasyChat',
+  title: 'FastChat',
   description: 'A simple chat app',
 }
 
