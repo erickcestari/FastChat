@@ -1,34 +1,42 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Real-Time Chat Application
+
+Welcome to our Real-Time Chat Application repository! This project leverages the power of modern web technologies to provide a seamless and interactive chatting experience.
+
+## Features
+
+- **Real-Time Messaging**: Utilizing Socket.IO for real-time communication, this chat app ensures that messages are instantly delivered to all participants.
+- **User-Friendly Interface**: Built with React and styled using Tailwind CSS, the app offers an intuitive and responsive UI for a comfortable user experience.
+- **Efficient Backend**: Fastify serves as the backend framework, enabling quick and efficient handling of HTTP requests and WebSocket connections.
+- **Data Persistence**: Prisma, a modern database toolkit, is integrated to manage database operations, ensuring reliable storage of chat messages and user data.
+- **TypeScript**: The entire codebase is written in TypeScript, providing improved code quality, better documentation, and enhanced development experience.
+
+## Technologies Used
+
+- Frontend: Next.js, React, Tailwind CSS
+- Backend: Fastify, Socket.IO
+- Database: Prisma
+- Language: TypeScript
 
 ## Getting Started
 
-First, run the development server:
+To run the chat application locally, follow these steps:
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
+1. Clone this repository: `git clone https://github.com/erickcestari/Real-Time-Chat-Application.git`
+2. Navigate to the project directory: `cd real-time-chat-app`
+3. Install dependencies: `npm install or yarn`
+4. Set up the database schema using Prisma: `npx migrate or yarn migrate`
+5. Start the development server: `npm run dev or yarn dev`
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open your browser and visit `http://localhost:3000` to access the chat application.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Contributing
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+We welcome contributions from the community! If you have ideas for improvements, bug fixes, or new features, feel free to submit a pull request.
 
-## Learn More
+## License
 
-To learn more about Next.js, take a look at the following resources:
+This project is licensed under the [MIT License](LICENSE).
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+---
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Built with ❤️ using Next.js, React, Tailwind CSS, Socket.IO, Fastify, TypeScript, and Prisma.
