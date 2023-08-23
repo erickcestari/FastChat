@@ -12,7 +12,7 @@ const Page = () => {
   const [messageList, setMessageList] = useState<any>([])
   const [socket, setSocket] = useState<any>(null)
   const [users, setUsers] = useState<any>([])
-  const [userNow, setUserNow] = useState<any>(null)
+  const [userNow, setUserNow] = useState<any>()
   const [text, setText] = useState<string>('')
   const [userAuthor, setUserAuthor] = useState<any>(null)
 
@@ -20,10 +20,10 @@ const Page = () => {
     const newSocket = io('http://localhost:3333')
     newSocket.emit('join', username)
     newSocket.emit('userAuthor', username)
+    newSocket.on('users', (users: any) => setUsers([...users]))
     
-    setUserNow(users[0])
     setSocket(newSocket)
-  }, [])
+  }, [username])
 
   useEffect(() => {
     connectSocket()
@@ -35,16 +35,17 @@ const Page = () => {
         console.log(messages)
         setMessageList([...messages])
       })
-      socket.on('userAuthor', (user: any) => setUserAuthor(user))
+      socket.on('user_author', (user: any) => {setUserAuthor(users[0])})
       socket.on('users', (users: any) => setUsers([...users]))
+      setUserNow(users[0])
     }
     
-  }, [socket])
-
+  }, [socket, setUserNow, users])
 
   return (
     <div>
-      {users.map((user: any) => <p key={user.id}>{user.name}</p>)}
+      {userAuthor && <p className='text-green-500'>User: {userAuthor.name}</p>}
+      {userNow && users.map((user: any) => <p onClick={() => setUserNow(user)} key={user.id} className={userNow.id === user.id ? 'text-red-600' : 'text-blue-400'}>{user.name}</p>)}
       {messageList.map((message: any) =>
         <div key={message.id}>
           {message.authorUser.name}: {message.content}
@@ -56,7 +57,7 @@ const Page = () => {
         onKeyDown={(e) => {
           if (e.key === 'Enter') {
             e.preventDefault()
-            socket.emit('sendMessage', {content: text, authorId: "83455daa-3525-484a-b524-b6d0b52c6b9f", receiverId: "ccc2729f-cd5b-4b32-8dba-c1b8a13c9e91"})
+            socket.emit('sendMessage', {content: text, authorId: userAuthor.id, receiverId: userNow.id})
             setText('')
           }
         }}
