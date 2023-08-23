@@ -28,19 +28,20 @@ const Page = () => {
         setAuthor(user)
       })
       socket.on('getAllUsers', (userList: User[]) => {
-        setUsers(userList)
+        const filteredUserList = userList.filter(user => user.name !== (username as string).toLowerCase())
+        setUsers(filteredUserList)
       })
     }
-  }, [socket])
+  }, [socket, username])
 
   return (
     <div className='flex flex-row justify-normal'>
       <div >
         {author && (
           <div className='bg-slate-900'>
-            <div className='flex items-center gap-3'>
+            <div className='flex items-center gap-2'>
               <Avatar sx={{ bgcolor: `#${author.id.slice(author.id.length - 7, author.id.length - 1)}` }}>{author.name.slice(0, 2).toUpperCase()}</Avatar>
-              <h1>{author.name.toUpperCase()}</h1>
+              <h1 className='font-roboto font-normal'>{author.name.toUpperCase()}</h1>
             </div>
           </div>
         )}
