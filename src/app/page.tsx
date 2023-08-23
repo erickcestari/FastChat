@@ -20,7 +20,7 @@ export default function Home() {
   const handleSendUserName = () => {
     if (username.trim().length === 0) return
 
-    router.push(`/${username}`)
+    router.push(`/user/${username}`)
 
   }
 
