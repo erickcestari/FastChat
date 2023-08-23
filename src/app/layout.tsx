@@ -28,7 +28,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={roboto.variable}>
         <MuiTheme>
-        <main className="flex min-h-screen flex-col items-center justify-between bg-gradient-to-br from-slate-800 to-slate-700 p-24">
+        <main className="flex min-h-screen flex-col bg-gradient-to-br from-slate-800 to-slate-700 p-24">
           {children}
         </main>
         </MuiTheme>

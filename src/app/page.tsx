@@ -1,12 +1,12 @@
 "use client"
 
-import TextField from '@mui/material/TextField'
+import { IconButton } from '@mui/material'
 import InputAdornment from '@mui/material/InputAdornment'
-import { ChangeEvent, useState } from 'react'
+import TextField from '@mui/material/TextField'
 import AccountCircleOutline from 'mdi-material-ui/AccountCircleOutline'
 import SendCircleOutline from 'mdi-material-ui/SendCircleOutline'
-import { IconButton } from '@mui/material'
 import { useRouter } from 'next/navigation'
+import { ChangeEvent, useState } from 'react'
 
 export default function Home() {
   const [username, setUsername] = useState('')
@@ -21,7 +21,6 @@ export default function Home() {
     if (username.trim().length === 0) return
 
     router.push(`/user/${username}`)
-
   }
 
   return (
@@ -37,13 +36,13 @@ export default function Home() {
           <div className='md:bg-gradient-to-br md:left-80 absolute bg-none top-4 h-5 w-5  rounded-full from-red-400 to-transparent' />
         </div>
       </div >
-      <div className='flex flex-col w-full space-y-4'>
+      <div className='flex flex-col space-y-4'>
         <p className=" text-white font-roboto">
           Enter your username to get started!
         </p>
-        <div className='flex flex-row items-center'>
+        <div className='flex md:flex-row flex-col items-center'>
           <TextField
-            className='shadow-lg w-[50%] dark:bg-gray-800'
+            className='shadow-lg w-[100%] md:w-[400px] lg:w-[930px] dark:bg-gray-800'
             label={'Your-Username'}
             value={username}
             onChange={handleChangeUsername}
