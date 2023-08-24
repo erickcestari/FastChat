@@ -54,7 +54,7 @@ const Page = () => {
             </div>
           </div>
         )}
-        <div className='md:max-h-[680px] max-h-48 overflow-y-auto customScrollBar'>
+        <div className='md:max-h-[680px] bg-slate-800 max-h-48 md:h-[680px] overflow-y-auto customScrollBar'>
           {userSelected && users.map((user: User) => (
             <RenderUser user={user} handleSelectUser={handleSelectUser} isUserSelected={userSelected.id === user.id} key={user.id} />
           ))}
