@@ -59,7 +59,7 @@ const Chat = (props: ChatProps) => {
           ))}
         </div>
         <div className='absolute bottom-0 w-full'>
-          <TextField sx={{maxHeight:'90px', overflow:'auto'}} className='customScrollBar' onChange={handleChange} value={text} onKeyDown={handleKeyDown} multiline fullWidth variant='filled' placeholder='Digite sua mensagem' />
+          <TextField sx={{maxHeight:'90px', overflow:'auto'}} className='customScrollBar' onChange={handleChange} value={text} onKeyDown={handleKeyDown} multiline fullWidth variant='filled' placeholder='Write your message...' />
         </div>
       </div>
     </div>
