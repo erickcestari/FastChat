@@ -2,7 +2,7 @@ import { NextResponse } from 'next/server'
 import type { NextRequest } from 'next/server'
  
 export function middleware(request: NextRequest, next: NextRequest) {
-  const userNameMaxLenght = 35
+  const userNameMaxLenght = 15
   
   const username = request.url.split('/').pop()
   

@@ -42,7 +42,7 @@ const Page = () => {
   }
 
   return (
-    <div className='flex flex-row justify-normal'>
+    <div className='flex md:flex-row flex-col justify-normal'>
       <div className='flex flex-col w-full max-w-lg'>
         {author && (
           <div className='bg-slate-900'>
@@ -54,7 +54,7 @@ const Page = () => {
             </div>
           </div>
         )}
-        <div className='max-h-[680px] overflow-auto customScrollBar'>
+        <div className='md:max-h-[680px] max-h-48 overflow-y-auto customScrollBar'>
           {userSelected && users.map((user: User) => (
             <RenderUser user={user} handleSelectUser={handleSelectUser} isUserSelected={userSelected.id === user.id} key={user.id} />
           ))}
