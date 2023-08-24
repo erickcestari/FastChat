@@ -12,7 +12,7 @@ const theme = createTheme({
       dark: 'rgba(60, 60, 80, 0.8)',
       contrastText: '#FFF'
     },
-    error:{
+    error: {
       light: 'rgba(180, 180, 240, 0.7)',
       main: 'rgba(120, 120, 160, 0.7)',
       dark: 'rgba(60, 60, 80, 0.7)',
@@ -30,99 +30,99 @@ const theme = createTheme({
       dark: 'rgba(60, 60, 80, 0.7)',
       contrastText: '#FFF'
     },
-},
-breakpoints: {
-  values: {
-    xs: 0,
-    sm: 768,
-    md: 992,
-    lg: 1200,
-    xl: 1920
-  }
-},
-components: {
-  MuiAutocomplete: {
-    styleOverrides: {
-      paper: {
-        ...({ boxShadow: 'none', border: `1px solid #2B4C81` })
-      }
+  },
+  breakpoints: {
+    values: {
+      xs: 0,
+      sm: 768,
+      md: 992,
+      lg: 1200,
+      xl: 1920
     }
   },
-  MuiButton: {
-    defaultProps: {
-      disableElevation: true
+  components: {
+    MuiAutocomplete: {
+      styleOverrides: {
+        paper: {
+          ...({ boxShadow: 'none', border: `1px solid #2B4C81` })
+        }
+      }
     },
-    styleOverrides: {
-      root: {
-        textTransform: 'none'
+    MuiButton: {
+      defaultProps: {
+        disableElevation: true
       },
-      sizeSmall: {
-        padding: '6px 16px'
-      },
-      sizeMedium: {
-        padding: '8px 20px'
-      },
-      sizeLarge: {
-        padding: '11px 24px'
-      },
-      textSizeSmall: {
-        padding: '7px 12px'
-      },
-      textSizeMedium: {
-        padding: '9px 16px'
-      },
-      textSizeLarge: {
-        padding: '12px 16px'
+      styleOverrides: {
+        root: {
+          textTransform: 'none'
+        },
+        sizeSmall: {
+          padding: '6px 16px'
+        },
+        sizeMedium: {
+          padding: '8px 20px'
+        },
+        sizeLarge: {
+          padding: '11px 24px'
+        },
+        textSizeSmall: {
+          padding: '7px 12px'
+        },
+        textSizeMedium: {
+          padding: '9px 16px'
+        },
+        textSizeLarge: {
+          padding: '12px 16px'
+        }
       }
-    }
-  },
-  MuiCardActions: {
-    styleOverrides: {
-      root: {
-        padding: '16px 24px'
+    },
+    MuiCardActions: {
+      styleOverrides: {
+        root: {
+          padding: '16px 24px'
+        }
       }
-    }
-  },
-  MuiCardContent: {
-    styleOverrides: {
-      root: {
-        padding: '32px 24px',
-        '&:last-child': {
-          paddingBottom: '32px'
+    },
+    MuiCardContent: {
+      styleOverrides: {
+        root: {
+          padding: '32px 24px',
+          '&:last-child': {
+            paddingBottom: '32px'
+          }
+        }
+      }
+    },
+    MuiCssBaseline: {
+      styleOverrides: {
+        '*': {
+          boxSizing: 'border-box'
+        },
+        html: {
+          MozOsxFontSmoothing: 'grayscale',
+          WebkitFontSmoothing: 'antialiased',
+          display: 'flex',
+          flexDirection: 'column',
+          minHeight: '100%',
+          width: '100%'
+        },
+        body: {
+          display: 'flex',
+          flex: '1 1 auto',
+          flexDirection: 'column',
+          minHeight: '100%',
+          width: '100%'
+        },
+        '#__next': {
+          display: 'flex',
+          flex: '1 1 auto',
+          flexDirection: 'column',
+          height: '100%',
+          width: '100%'
         }
       }
     }
   },
-  MuiCssBaseline: {
-    styleOverrides: {
-      '*': {
-        boxSizing: 'border-box'
-      },
-      html: {
-        MozOsxFontSmoothing: 'grayscale',
-        WebkitFontSmoothing: 'antialiased',
-        display: 'flex',
-        flexDirection: 'column',
-        minHeight: '100%',
-        width: '100%'
-      },
-      body: {
-        display: 'flex',
-        flex: '1 1 auto',
-        flexDirection: 'column',
-        minHeight: '100%',
-        width: '100%'
-      },
-      '#__next': {
-        display: 'flex',
-        flex: '1 1 auto',
-        flexDirection: 'column',
-        height: '100%',
-        width: '100%'
-      }
-    }
-  }
-},
 })
 
 interface MuiThemeprops {
