@@ -19,7 +19,6 @@ const Chat = (props: ChatProps) => {
 
   useEffect(() => {
     socket.emit('joinRoom', ({authorId: author.id, receiverId: userSelected.id}))
-    console.log(userSelected)
     socket.on('receiveMessage', (data) => {
       setMessages(data)
     })
