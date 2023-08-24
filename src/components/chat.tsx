@@ -1,5 +1,5 @@
 import { User } from '@/types/userTypes'
-import { Avatar, TextField } from '@mui/material'
+import { Avatar, TextField, Badge } from '@mui/material'
 import dayjs from 'dayjs'
 import 'dayjs/locale/en'
 import { ChangeEvent, KeyboardEvent, useEffect, useState } from 'react'
@@ -40,10 +40,20 @@ const Chat = (props: ChatProps) => {
   return (
     <div className='flex w-full flex-col'>
       <div className='from-slate-900 w-full to-slate-800 bg-gradient-to-br  text-slate-300 font-roboto h-16 py-3 px-3 items-center flex gap-3'>
-        <Avatar sx={{ background: `linear-gradient(to right bottom, #${userSelected.id.slice(0, 6)}, #${userSelected.id.slice(userSelected.id.length - 7, userSelected.id.length - 1)})` }}>
-          {userSelected.name.slice(0, 2).toUpperCase()}
-        </Avatar>
+        <Badge
+          overlap="circular"
+          anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
+          variant="dot"
+          color={userSelected.status === 'online' ? 'success' : 'error'}
+        >
+          <Avatar sx={{ background: `linear-gradient(to right bottom, #${userSelected.id.slice(0, 6)}, #${userSelected.id.slice(userSelected.id.length - 7, userSelected.id.length - 1)})` }}>
+            {userSelected.name.slice(0, 2).toUpperCase()}
+          </Avatar>
+        </Badge>
+        <div className='flex flex-col'>
         {userSelected.name[0].toUpperCase() + userSelected.name.slice(1, userSelected.name.length)}
+        <p className='text-xs'>{userSelected.status}</p>
+        </div>
       </div>
       <div className='relative flex h-full w-full bg-slate-950'>
         <div className='flex flex-col gap-2 w-full h-full md:mb-0 mb-[56px] max-h-[624px] overflow-auto customScrollBar'>
