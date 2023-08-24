@@ -1,10 +1,7 @@
-import './globals.css'
 import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
-import MuiTheme from './theme'
 import { Roboto_Slab } from 'next/font/google'
-
-const inter = Inter({ subsets: ['latin'] })
+import './globals.css'
+import MuiTheme from './theme'
 
 const roboto = Roboto_Slab({
   weight: ['100', '200', '300', '400', '500', '600', '700'],
@@ -28,9 +25,9 @@ export default function RootLayout({
     <html lang="en">
       <body className={roboto.variable}>
         <MuiTheme>
-        <main className="flex min-h-screen flex-col bg-gradient-to-br from-slate-800 to-slate-700 p-24">
-          {children}
-        </main>
+          <main className="flex min-h-screen flex-col bg-gradient-to-br from-slate-800 to-slate-700 p-24">
+            {children}
+          </main>
         </MuiTheme>
       </body>
     </html>

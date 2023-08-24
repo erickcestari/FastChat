@@ -2,7 +2,7 @@ import { User } from '@/types/userTypes'
 import { Avatar, TextField } from '@mui/material'
 import dayjs from 'dayjs'
 import 'dayjs/locale/en'
-import { ChangeEvent, ChangeEventHandler, KeyboardEvent, useEffect, useState } from 'react'
+import { ChangeEvent, KeyboardEvent, useEffect, useState } from 'react'
 import { Socket } from 'socket.io-client'
 
 interface ChatProps {
@@ -17,25 +17,24 @@ const Chat = (props: ChatProps) => {
   const [messages, setMessages] = useState<any[]>([])
   const [text, setText] = useState('')
 
+  const maxTextLength = 500;
+
   useEffect(() => {
-    socket.emit('joinRoom', ({authorId: author.id, receiverId: userSelected.id}))
+    socket.emit('joinRoom', ({ authorId: author.id, receiverId: userSelected.id }))
     socket.on('receiveMessage', (data) => {
       setMessages(data)
-    })
-    socket.on('updateMessages', () => {
-      socket.emit('joinRoom', ({authorId: author.id, receiverId: userSelected.id}))
     })
   }, [socket, author, userSelected])
 
   const handleKeyDown = (e: KeyboardEvent<HTMLDivElement>) => {
     if (e.key === 'Enter' && e.shiftKey == false && text.trim().length > 0) {
-      socket.emit('sendMessage', {authorId: author.id, receiverId: userSelected.id, content: text})
+      socket.emit('sendMessage', { authorId: author.id, receiverId: userSelected.id, content: text })
       setText('')
     }
   }
 
   const handleChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
-    if(text.trim().length === 0 && e.target.value == '\n') return
+    if (text.trim().length === 0 && e.target.value == '\n' || text.length > maxTextLength) return
     setText(e.target.value)
   }
   return (
@@ -58,7 +57,7 @@ const Chat = (props: ChatProps) => {
           ))}
         </div>
         <div className='absolute bottom-0 w-full'>
-          <TextField sx={{maxHeight:'90px', overflow:'auto'}} className='customScrollBar' onChange={handleChange} value={text} onKeyDown={handleKeyDown} multiline fullWidth variant='filled' placeholder='Write your message...' />
+          <TextField sx={{ maxHeight: '90px', overflow: 'auto' }} className='customScrollBar' onChange={handleChange} value={text} onKeyDown={handleKeyDown} multiline fullWidth variant='filled' placeholder='Write your message...' />
         </div>
       </div>
     </div>

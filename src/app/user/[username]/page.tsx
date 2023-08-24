@@ -1,11 +1,11 @@
 "use client"
-import React, { useState, useEffect, useCallback } from 'react'
-import { useParams } from 'next/navigation'
-import io, { Socket } from 'socket.io-client'
+import Chat from '@/components/chat'
+import RenderUser from '@/components/renderUser'
 import { User } from '@/types/userTypes'
 import Avatar from '@mui/material/Avatar'
-import RenderUser from '@/components/renderUser'
-import Chat from '@/components/chat'
+import { useParams } from 'next/navigation'
+import { useCallback, useEffect, useState } from 'react'
+import io, { Socket } from 'socket.io-client'
 
 const Page = () => {
   const { username } = useParams()
