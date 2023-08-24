@@ -19,6 +19,7 @@ const Chat = (props: ChatProps) => {
 
   useEffect(() => {
     socket.emit('joinRoom', ({authorId: author.id, receiverId: userSelected.id}))
+    console.log(userSelected)
     socket.on('receiveMessage', (data) => {
       setMessages(data)
     })
@@ -29,7 +30,6 @@ const Chat = (props: ChatProps) => {
 
   const handleKeyDown = (e: KeyboardEvent<HTMLDivElement>) => {
     if (e.key === 'Enter' && e.shiftKey == false && text.trim().length > 0) {
-      console.log(author.id, userSelected.id, text)
       socket.emit('sendMessage', {authorId: author.id, receiverId: userSelected.id, content: text})
       setText('')
     }

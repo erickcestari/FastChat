@@ -32,10 +32,10 @@ const Page = () => {
       socket.on('getAllUsers', (userList: User[]) => {
         const filteredUserList = userList.filter(user => user.name !== (username as string).toLowerCase())
         setUsers(filteredUserList)
-        setUserSelected(filteredUserList[0])
+        !userSelected && setUserSelected(filteredUserList[0])
       })
     }
-  }, [socket, username])
+  }, [socket, username, userSelected])
 
   const handleSelectUser = (user: User) => {
     setUserSelected(user)
