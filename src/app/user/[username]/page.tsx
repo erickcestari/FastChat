@@ -6,6 +6,7 @@ import Avatar from '@mui/material/Avatar'
 import { useParams } from 'next/navigation'
 import { useCallback, useEffect, useState } from 'react'
 import io, { Socket } from 'socket.io-client'
+import { env } from 'process'
 
 const Page = () => {
   const { username } = useParams()
@@ -14,11 +15,13 @@ const Page = () => {
   const [users, setUsers] = useState<User[]>([])
   const [userSelected, setUserSelected] = useState<User | null>(null)
 
+  const apiURL: string = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3333'
+
   const connectSocket = useCallback(async () => {
-    const newSocket = io('http://localhost:3333')
+    const newSocket = io(apiURL)
     newSocket.emit('join', username)
     setSocket(newSocket)
-  }, [username])
+  }, [username, apiURL])
 
   useEffect(() => {
     connectSocket()
